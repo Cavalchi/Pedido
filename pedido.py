@@ -2,13 +2,12 @@ import tkinter as tk
 from tkinter import *
 import random
 from tkinter import messagebox
-
+import webbrowser
 
 root = tk.Tk()
 root.title('Aceitas?')
 root.geometry('600x600')
 root.configure(background='#c8c8ff')
-
 
 def move_button_1(e):
     if abs(e.x - button_1.winfo_x()) < 50 and abs(e.y - button_1.winfo_y()) < 50:
@@ -16,17 +15,14 @@ def move_button_1(e):
         y = random.randint(0, root.winfo_height() - button_1.winfo_height())
         button_1.place(x=x, y=y)
 
-
 def accepted():
-    messagebox.showinfo(
-        'Meu amor', 'Lanchinho mais tarde bb?')
-
+    webbrowser.open('https://youtu.be/eJK0d4Dfkss?t=64')  # Substitua 'http://www.example.com' pelo seu link
+    messagebox.showinfo('Meu amor', 'VEIO AI')
 
 def denied():
     button_1.destroy()
 
-
-margin = Canvas(root, width=500, bg='#c8c8ff', height=100,
+margin = Canvas(root, width=1000, bg='#c8c8ff', height=100,
                 bd=0, highlightthickness=0, relief='ridge')
 margin.pack()
 text_id = Label(root, bg='#c8c8ff', text='Quer namorar comigo?',
@@ -38,7 +34,7 @@ button_1.pack()
 root.bind('<Motion>', move_button_1)
 button_2 = tk.Button(root, text='Sim', bg='#c8ffe6', relief=RIDGE,
                      bd=3, command=accepted, font=('Montserrat', 14, 'bold'))
-button_2.pack()
-
+# Posicionando o botão no meio da tela
+button_2.place(relx=0.5, rely=0.5, anchor=CENTER)
 
 root.mainloop()
